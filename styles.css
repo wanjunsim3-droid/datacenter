@@ -457,6 +457,108 @@ h1, h2, h3, h4 {
     margin-top: 5px;
 }
 
+/* Status Grid */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.status-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.status-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 243, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.05);
+}
+
+.status-card:hover::before {
+    opacity: 1;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1.5rem;
+}
+
+.status-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.status-card:hover .status-number {
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.status-header h3 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.status-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.2rem;
+}
+
+.status-item i {
+    color: var(--text-muted);
+    width: 24px;
+    text-align: center;
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.status-card:hover .status-item i {
+    color: var(--primary);
+}
+
+.status-item.highlight i,
+.status-item.highlight span {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.status-card:hover .status-item.highlight i {
+    color: #10b981;
+}
+
 /* Contact Section */
 .contact-container {
     display: grid;
@@ -618,6 +720,7 @@ footer {
     .hero h1 { font-size: 3rem; }
     .features-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .status-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-card.premium { transform: scale(1); }
     .pricing-card.premium:hover { transform: translateY(-10px); }
     .contact-container { grid-template-columns: 1fr; }
@@ -626,6 +729,7 @@ footer {
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .stats-grid { grid-template-columns: 1fr; }
+    .status-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.5rem; }
     .hero-buttons { flex-direction: column; }
     .footer-content { flex-direction: column; gap: 2rem; text-align: center; }
